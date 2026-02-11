@@ -1,0 +1,26 @@
+[
+  {
+    "id": "oil-01",
+    "service": "Full Synthetic Oil Change",
+    "category": "Maintenance",
+    "price": 65.00,
+    "estimatedTime": "45 mins",
+    "description": "Includes up to 5 quarts of synthetic oil and a new filter."
+  },
+  {
+    "id": "brk-02",
+    "service": "Brake Pad Replacement",
+    "category": "Brakes",
+    "price": 180.00,
+    "estimatedTime": "2 hours",
+    "description": "Front or rear axle brake pad installation and rotor inspection."
+  },
+  {
+    "id": "twn-03",
+    "service": "Engine Tune-Up",
+    "category": "Engine",
+    "price": 120.00,
+    "estimatedTime": "1.5 hours",
+    "description": "Replacement of spark plugs and inspection of ignition system components."
+  }
+]

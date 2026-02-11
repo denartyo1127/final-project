@@ -1,0 +1,316 @@
+:root {
+    --primary-red: #d32f2f;
+    --accent-yellow: #fbc02d;
+    --dark-grey: #333;
+    --light-grey: #f4f4f4;
+}
+
+header {
+    background-color: var(--dark-grey);
+    color: white;
+    padding: 1rem;
+    border-bottom: 5px solid var(--primary-red);
+}
+
+.logo-red { color: var(--primary-red); font-weight: bold; font-size: 1.5rem; }
+.logo-yellow { color: var(--accent-yellow); font-weight: bold; font-size: 1.5rem; }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    background-color: var(--dark-grey);
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    border-top: 5px solid var(--accent-yellow);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    list-style: none;
+}
+
+.service-card {
+    border: 2px solid var(--dark-grey);
+    padding: 15px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 4px 4px 0px var(--primary-red); /* Industrial look */
+}
+
+.service-card h3 {
+    margin-top: 0;
+    color: var(--primary-red);
+}
+
+.add-to-quote {
+    background-color: var(--accent-yellow);
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-to-quote:hover {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+.quote-box {
+    background-color: var(--light-grey);
+    border-left: 10px solid var(--accent-yellow);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    border-radius: 4px;
+}
+
+.quote-text cite {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-style: normal;
+    color: var(--dark-grey);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.quote-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.total-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--dark-grey);
+    color: var(--accent-yellow);
+    font-size: 1.5rem;
+    text-align: right;
+    border-radius: 4px;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+/* Mobile Wireframe Layout */
+main {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 20px;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero & Quote Section */
+.hero {
+  background: var(--dark-grey);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* Service List Area */
+#service-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Stack cards on mobile */
+  gap: 15px;
+}
+
+/* The "Sticky" Estimate Summary */
+.quote-summary {
+  background: var(--light-grey);
+  border: 2px solid var(--primary-red);
+  padding: 20px;
+  border-radius: 8px;
+  position: sticky;
+  bottom: 0; /* Keeps total visible on mobile while scrolling */
+}
+
+/* Desktop Adjustment (Wireframe) */
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: 2fr 1fr; /* Services on left, Estimate on right */
+  }
+  
+  .hero {
+    grid-column: span 2;
+  }
+
+  #service-list {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for desktop */
+  }
+
+  .quote-summary {
+    position: sticky;
+    top: 20px; /* Floats on the side while scrolling services */
+    height: fit-content;
+  }
+}
+
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* Align items to the top */
+    align-items: start;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Repairs Section (Left Column) */
+.services {
+    grid-column: 1;
+}
+
+/* Sidebar Section (Right Column) */
+.sidebar {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Daily Quote (Top of Sidebar) */
+#daily-quote {
+    background: #f9f9f9;
+    border: 2px solid var(--accent-yellow);
+    padding: 15px;
+    min-height: 150px;
+}
+
+/* Summary & Total (Bottom of Sidebar) */
+.quote-summary {
+    background: var(--dark-grey);
+    color: white;
+    padding: 20px;
+    border: 3px solid var(--primary-red);
+}
+
+@media (max-width: 768px) {
+    main {
+        /* Stack everything in one column on small screens */
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        grid-column: 1; /* Moves under the repairs */
+    }
+}
+
+/* Footer Container Logic */
+.footer-container {
+    display: flex;
+    flex-direction: column; /* Stacks copyright over links */
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Make the list horizontal */
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allows links to wrap on very small screens */
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 30px; /* Space between the links */
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.footer-links li a:hover {
+    color: var(--accent-yellow);
+    text-decoration: underline;
+}
+/* Header Container */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Pushes Logo to left, Nav to center, Icon to right */
+    align-items: center;
+    padding: 0 20px;
+    height: 80px;
+}
+
+/* Horizontal Nav List */
+.nav-links {
+    display: flex; /* Makes the list horizontal */
+    list-style: none;
+    gap: 25px; /* Space between links */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--accent-yellow);
+}
+
+/* Icons styling */
+.header-icons .cart-link {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide horizontal links on mobile */
+    }
+
+    #menu-button {
+        display: block;
+        background: none;
+        border: 2px solid var(--accent-yellow);
+        color: white;
+        padding: 5px 10px;
+    }
+}
+
+/* Desktop View */
+@media (min-width: 769px) {
+    #menu-button {
+        display: none; /* Hide hamburger on desktop */
+    }
+}

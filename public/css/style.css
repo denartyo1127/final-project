@@ -378,3 +378,19 @@ button {
 .hidden {
   display: none;
 }
+
+/* Mobile-first: single column by default */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Desktop: two columns (Sidebar for Quotes/Estimates) */
+@media screen and (min-width: 768px) {
+  .main-container {
+    grid-template-columns: 2fr 1fr;
+    padding: 20px;
+  }
+}

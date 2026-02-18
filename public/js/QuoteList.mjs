@@ -6,6 +6,8 @@ export default class QuoteList {
   }
 
   init() {
+    this.updateUI();
+    window.addEventListener("quoteUpdated", () => this.updateUI());
     const list = JSON.parse(localStorage.getItem(this.key)) || [];
     this.renderQuoteList(list);
     this.calculateTotal(list);

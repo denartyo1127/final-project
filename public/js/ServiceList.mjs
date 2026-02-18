@@ -46,7 +46,6 @@ export default class ServiceList {
     
     // 3. Save back to localStorage
     localStorage.setItem("auto-quote", JSON.stringify(currentQuote));
-    localStorage.setItem("auto-quote", JSON.stringify(list));
 
     window.dispatchEvent(new Event("quoteUpdated"));
     

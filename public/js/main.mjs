@@ -5,7 +5,7 @@ import fetchDailyQuote from "./QuoteAPI.mjs";
 import QuoteList from "./QuoteList.mjs";
 
 // Initialize UI
-loadHeaderFooter();
+loadHeaderFooter(".");
 fetchDailyQuote();
 
 // Initialize Services
@@ -31,6 +31,39 @@ document.querySelector(".filter-controls").addEventListener("click", async (e) =
             ? allServices 
             : allServices.filter(s => s.category === category);
             
-        myList.renderList(filtered); // Refresh the view with the filtered data
+        myList.renderList(filtered);
     }
 });
+
+// Function to refresh the UI in the Estimate Summary box
+function updateEstimateSummary() {
+    const summaryElement = document.querySelector(".estimate-summary");
+    const quoteData = JSON.parse(localStorage.getItem("auto-quote")) || [];
+    
+    // Calculate total
+    const total = quoteData.reduce((sum, item) => sum + item.price, 0);
+
+    // Build the list of services
+    const itemsHtml = quoteData.map(item => `
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>${item.service}</span>
+            <span>$${item.price.toFixed(2)}</span>
+        </div>
+    `).join("");
+
+    // Update the HTML inside the box
+    summaryElement.innerHTML = `
+        <h3 style="border-bottom: 1px solid white; padding-bottom: 10px;">Estimate Summary</h3>
+        <div class="summary-list" style="margin: 15px 0;">
+            ${itemsHtml || "<p>No repairs added yet.</p>"}
+        </div>
+        <hr>
+        <p><strong>TOTAL: $${total.toFixed(2)}</strong></p>
+    `;
+}
+
+// 1. Run it immediately when page loads so it shows existing data
+updateEstimateSummary();
+
+// 2. Listen for the event your ServiceList.mjs dispatches
+window.addEventListener("quoteUpdated", updateEstimateSummary);

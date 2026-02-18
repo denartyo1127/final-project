@@ -12,17 +12,18 @@ async function loadTemplate(path) {
   return template;
 }
 
-export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("/partials/Header.html");
-  const footerTemplate = await loadTemplate("/partials/footer.html");
+export async function loadHeaderFooter(baseUrl = "") {
+  // Use the baseUrl to find the partials folder correctly
+  const headerTemplate = await loadTemplate(`${baseUrl}/partials/Header.html`);
+  const footerTemplate = await loadTemplate(`${baseUrl}/partials/footer.html`);
 
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
-  updateCartCount();
   
+  updateCartCount();
 }
 
 export function updateCartCount() {

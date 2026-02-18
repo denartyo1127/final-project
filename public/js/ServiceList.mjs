@@ -38,18 +38,10 @@ export default class ServiceList {
   }
 
   addToQuote(service) {
-    // 1. Get current quote from localStorage or create empty array
     let currentQuote = JSON.parse(localStorage.getItem("auto-quote")) || [];
-    
-    // 2. Add the new service
     currentQuote.push(service);
-    
-    // 3. Save back to localStorage
     localStorage.setItem("auto-quote", JSON.stringify(currentQuote));
-
     window.dispatchEvent(new Event("quoteUpdated"));
-    
-    // 4. Visual feedback
     alert(`${service.service} added to your estimate!`);
     
   }

@@ -8,7 +8,6 @@ async function convertToJson(res) {
 
 export default class ExternalServices {
   constructor() {
-    // Path to your local JSON file
     this.path = "./services.json";
   }
 

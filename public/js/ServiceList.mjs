@@ -1,4 +1,4 @@
-// Function to generate the HTML for a single service item
+
 function serviceCardTemplate(service) {
   return `<li class="service-card">
     <h3>${service.service}</h3>
@@ -46,8 +46,11 @@ export default class ServiceList {
     
     // 3. Save back to localStorage
     localStorage.setItem("auto-quote", JSON.stringify(currentQuote));
+    localStorage.setItem("auto-quote", JSON.stringify(list));
+
+    window.dispatchEvent(new Event("quoteUpdated"));
     
-    // 4. Visual feedback (Optional but helpful!)
+    // 4. Visual feedback
     alert(`${service.service} added to your estimate!`);
     
   }

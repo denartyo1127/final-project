@@ -8,7 +8,10 @@ export default class QuoteList {
   init() {
     this.updateUI();
     window.addEventListener("quoteUpdated", () => this.updateUI());
-    const list = JSON.parse(localStorage.getItem(this.key)) || [];
+  }
+
+  updateUI() {
+    const list = JSON.parse(sessionStorage.getItem(this.key)) || [];
     this.renderQuoteList(list);
     this.calculateTotal(list);
   }
@@ -41,13 +44,13 @@ export default class QuoteList {
   }
 
   removeItem(id) {
-    let list = JSON.parse(localStorage.getItem(this.key));
+    let list = JSON.parse(sessionStorage.getItem(this.key));
     // Remove only the first instance found with that ID
     const index = list.findIndex(item => item.id === id);
     if (index > -1) {
         list.splice(index, 1);
     }
-    localStorage.setItem(this.key, JSON.stringify(list));
+    sessionStorage.setItem(this.key, JSON.stringify(list));
     this.init(); // Re-render everything
   }
 }
